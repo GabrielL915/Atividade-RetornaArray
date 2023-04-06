@@ -1,25 +1,44 @@
 /*2 - Criar uma função que receba um array de obejtos (qualquer tamanho), 
 e retorne um array com 3 objetos deste array, porém ele deve pegar esses 3 valores de forma aleatoria. 
 Ex:valores da  posição 5, posição 7 e posição 3.*/
-
-const persons = [
-  { nome: "Joao", idade: 30 },
-  { nome: "Kleber", idade: 25 },
-  { nome: "Jucelino", idade: 40 },
-  { nome: "Kleiton", idade: 40 },
-  { nome: "Caio", idade: 40 },
-  { nome: "Seu Ze", idade: 40 },
+const produtosNovos = [
+  { nome: "Caneta", qtde: 10, preco: 7.99 },
+  { nome: "Impressora", qtde: 0, preco: 649.5 },
+  { nome: "Caderno", qtde: 4, preco: 27.1 },
+  { nome: "Lapis", qtde: 3, preco: 5.82 },
+  { nome: "Tesoura", qtde: 1, preco: 19.99 },
+  { nome: "Estojo", qtde: 7, preco: 9.99 },
+  { nome: "Teclado", qtde: 2, preco: 609.99 },
+  { nome: "Tenis", qtde: 3, preco: 350.99 },
+  { nome: "Fone", qtde: 5, preco: 198.99 },
+  { nome: "Mochila", qtde: 15, preco: 150.99 },
 ];
 
-function randoArrayIndex(arr) {
-  let randonIndexes = [];//armazenar index aleatorio
+function randoArray(array) {
+  let produtosSortidos = [];
 
-  for (let i = 0; i < 3; i++) {//tem que retornar 3 obj
-    let randomNum = Math.floor(Math.random() * arr.length);//armazena um valor aleatorio na var baseado no tamanho do array
-    randonIndexes.push(randomNum);//armazena os 3 randoNum no array
+  
+  while (produtosSortidos.length < 3) {
+    let randomNumber = Math.floor(Math.random() * array.length);
+    let produtoSelecionado = array[randomNumber];
+
+    
+   let selecionado = false;  
+    produtosSortidos.forEach((produtos) => {
+      if (produtos === produtoSelecionado) {
+        selecionado = true;
+      }
+    });
+
+    if (!selecionado) {
+      produtosSortidos.push(produtoSelecionado);
+    }
   }
-  let result = randonIndexes.map((i) => arr[i]);//armazena o novo array gerado com os index aleatorios no result
-  return result;
+
+  return produtosSortidos;
 }
 
-console.log(randoArrayIndex(persons));
+for (let index = 0; index < 10; index++) {
+  console.log(index);
+  console.log(randoArray(produtosNovos));
+}
